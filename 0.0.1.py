@@ -1,22 +1,22 @@
 import telebot
 from telebot import types
 
-TOKEN = ''  # Замените на свой токен
+TOKEN = ''  # Замініть на свій токен
 
 questions = [
     {
-        "question": "Какое химическое вещество обозначается символом H2O?",
-        "options": ["Кислород", "Водород", "Азот", "Вода"],
+        "question": "Яка хімічна речовина позначається символом H2O?",
+        "options": ["Кисень", "Водень", "Азот", "Вода"],
         "correct": 3
     },
     {
-        "question": "Какой художник написал картину 'Мона Лиза'?",
-        "options": ["Пабло Пикассо", "Леонардо да Винчи", "Винсент Ван Гог", "Рафаэль"],
+        "question": "Який художник написав картину 'Мона Ліза'?",
+        "options": ["Пабло Пікассо", "Леонардо да Вінчі", "Вінсент Ван Гог", "Рафаель"],
         "correct": 1
     },
     {
-        "question": "Какая планета считается самой большой в Солнечной системе?",
-        "options": ["Венера", "Земля", "Юпитер", "Марс"],
+        "question": "Яку планету вважають найбільшою в Сонячній системі?",
+        "options": ["Венера", "Земля", "Юпітер", "Марс"],
         "correct": 2
     }
 ]
@@ -46,7 +46,7 @@ def send_question(user_id):
 
         bot.send_message(user_id, question_data["question"], reply_markup=markup)
     else:
-        bot.send_message(user_id, f"Тест завершен! Ваш счет: {user_scores[user_id]['score']}",
+        bot.send_message(user_id, f"Тест завершено! Ваш рахунок: {user_scores[user_id]['score']}",
                          reply_markup=types.ReplyKeyboardRemove())
         del user_scores[user_id]
 
