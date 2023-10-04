@@ -38,12 +38,24 @@ user_scores = {}
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    """
+    Обробник команди /start.
+
+    Запускає тест для користувача.
+    """
+
     user_id = message.chat.id
     user_scores[user_id] = {"score": 0, "current_question": 0}
     send_question(user_id)
 
 
 def send_question(user_id):
+    """
+    Відправляє користувачу наступне запитання.
+
+    Якщо користувач досягнув останнього запитання, то тест завершується.
+    """
+
     user_data = user_scores[user_id]
     current_question = user_data["current_question"]
 
@@ -63,6 +75,12 @@ def send_question(user_id):
 
 @bot.message_handler(func=lambda message: True)
 def check_answer(message):
+    """
+    Перевіряє правильність відповіді користувача.
+
+    Якщо відповідь правильна, то користувач отримує бал.
+    """
+
     user_id = message.chat.id
     if user_id in user_scores:
         user_data = user_scores[user_id]
